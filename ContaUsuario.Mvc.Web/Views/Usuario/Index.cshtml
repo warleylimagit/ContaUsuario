@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ContaUsuario.Mvc.Web.ViewModel.UsuarioViewModel>
+
+@{
+    ViewBag.Title = "Lista de Usuários";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Lista de Usuários</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Novo", "Cadastro")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "Deletar", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
